@@ -21,7 +21,7 @@ class MRWordFrequencyCount(MRJob):
     l = list(values)
     #Returns the top 10 documents where the key word is repeated the most
     l = sorted(l, key=lambda x: x[1], reverse = True)[:10]
-    yield word, l
+    yield word, str(l)
 
   def steps(self):
     return [
