@@ -11,10 +11,12 @@ sys.setdefaultencoding('utf-8')
 
 
 # Optional apostrophe only between characters (w)+ ('? w)+
-WORD_RE = re.compile(r"[^\W_]+[\S]*[^\W_]+", re.UNICODE)
+#WORD_RE = re.compile(r"[^\W_]+[\S]?[\S]?[^\W_]+", re.UNICODE)
+WORD_RE = re.compile(r"[^\W_]+(?:[\S]?[^\W_]+)*", re.UNICODE)
 
 class MRWordFrequencyCount(MRJob):
 
+  INPUT_PROTOCOL = TextValueProtocol
   def getKey(item):
     return item[0]
 
